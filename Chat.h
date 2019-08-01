@@ -20,6 +20,7 @@ public:
     void readMessage(int i);
     int getNumUnreadMessage() const;
     bool validateSenderReceiver(const Message& message);
+    bool operator==(const Chat& right) const;
 
 private:
     std::string myName, otherName;

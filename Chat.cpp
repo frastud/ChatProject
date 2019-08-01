@@ -20,7 +20,6 @@ bool Chat::validateSenderReceiver(const Message &message) {
     return false;
 }
 
-
 void Chat::addMessage(const Message &newMessage) {
 
     if(validateSenderReceiver(newMessage)) {
@@ -57,4 +56,16 @@ int Chat::getNumUnreadMessage() const {
     }
 
     return unreadMessage;
+}
+
+bool Chat::operator==(const Chat &right) const {
+
+    if(right.myName != myName || right.otherName != otherName)
+        return false;
+
+    if(right.messages != messages)
+        return false;
+
+    return true;
+
 }
