@@ -24,7 +24,7 @@ void ChatList::deleteChat(const std::string &chatName) {
     }
 }
 
-Chat ChatList::findChat(const std::string &chatName) {
+Chat& ChatList::containedChat(const std::string &chatName) {
 
     if(!chats.empty()) {
 
@@ -37,8 +37,18 @@ Chat ChatList::findChat(const std::string &chatName) {
 
 }
 
-int ChatList::getNumChat() const {
 
-    return chats.size();
+bool ChatList::findChat(const std::string &chatName) const {
 
+    if(!chats.empty()) {
+
+        auto chat = chats.find(chatName);
+
+        if(chat != chats.end())
+            return true;
+        else return false;
+
+    }
+
+    return false;
 }

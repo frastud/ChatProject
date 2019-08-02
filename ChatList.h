@@ -16,9 +16,8 @@ public:
 
     void addChat(const Chat& chat);
     void deleteChat(const std::string  &chatName);
-    Chat findChat(const std::string &chatName);
-    int getNumChat() const;
-
+    Chat& containedChat(const std::string &chatName);
+    bool findChat(const std::string &chatName) const;
 
 private:
     std::map<std::string, Chat> chats;
