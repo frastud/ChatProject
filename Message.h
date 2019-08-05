@@ -18,6 +18,7 @@ public:
     bool isRead() const { return read; }
     void setRead(bool r) { read=r; }
     bool operator==(const Message &right) const;
+    bool operator!=(const Message &right) const;
 
 private:
     std::string sender, receiver, text;

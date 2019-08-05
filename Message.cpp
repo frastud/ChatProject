@@ -25,3 +25,9 @@ bool Message::operator==(const Message &right) const {
     return true;
 
 }
+
+bool Message::operator!=(const Message &right) const {
+
+    return !(*this == right);
+
+}

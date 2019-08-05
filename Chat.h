@@ -21,6 +21,7 @@ public:
     int getNumUnreadMessage() const;
     bool validateSenderReceiver(const Message& message);
     bool operator==(const Chat& right) const;
+    bool operator!=(const Chat& right) const;
 
 private:
     std::string myName, otherName;

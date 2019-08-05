@@ -69,3 +69,9 @@ bool Chat::operator==(const Chat &right) const {
     return true;
 
 }
+
+bool Chat::operator!=(const Chat &right) const {
+
+    return !(*this == right);
+
+}
