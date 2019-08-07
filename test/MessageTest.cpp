@@ -32,3 +32,29 @@ TEST(Message, SettingRead){
     ASSERT_EQ(true, m.isRead());
 
 }
+
+TEST(Message, EqualityOperator){
+
+    Message m("Caleb", "Rachele", "Happy birthday!");
+
+    ASSERT_TRUE(Message("Caleb", "Rachele", "Happy birthday!") == m);
+
+    ASSERT_FALSE(Message("Caleb", "Rachele", "Happy birthday :) !") == m);
+    ASSERT_FALSE(Message("Alex", "Rachele", "Happy birthday!") == m);
+    ASSERT_FALSE(Message("Caleb", "Claudia", "Happy birthday!") == m);
+    ASSERT_FALSE(Message("Caleb", "Rachele", "Happy birthday!", true) == m);
+
+}
+
+TEST(Message, InequalityOperator){
+
+    Message m("Andrea", "Alice", "How are you?");
+
+    ASSERT_FALSE(Message("Andrea", "Alice", "How are you?") != m);
+
+    ASSERT_TRUE(Message("Andrea", "Alice", "Hello, how are you?") != m);
+    ASSERT_TRUE(Message("Martina", "Alice", "How are you?") != m);
+    ASSERT_TRUE(Message("Andrea", "Letizia", "How are you?") != m);
+    ASSERT_TRUE(Message("Andrea", "Alice", "How are you?", true) != m);
+
+}

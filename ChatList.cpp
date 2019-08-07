@@ -52,3 +52,21 @@ bool ChatList::findChat(const std::string &chatName) const {
 
     return false;
 }
+
+
+bool ChatList::operator==(const ChatList &right) const {
+
+    if(chats != right.chats)
+        return false;
+
+    return true;
+}
+
+bool ChatList::operator!=(const ChatList &right) const {
+
+    if(*this == right)
+        return false;
+
+    return true;
+
+}

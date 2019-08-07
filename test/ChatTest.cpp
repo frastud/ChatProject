@@ -73,8 +73,53 @@ TEST(Chat, readMessage){
 
 }
 
+TEST(Chat, EqualityOperator) {
 
+    Chat chat("Giacomo", "Corinna");
+    Message message("Giacomo", "Corinna", "Hello!");
+    chat.addMessage(message);
 
+    Chat trueChat("Giacomo", "Corinna");
+    trueChat.addMessage(message);
+    ASSERT_TRUE(trueChat == chat);
+
+    Chat myNameChat("Alberto", "Corinna");
+    myNameChat.addMessage(message);
+    ASSERT_FALSE(myNameChat == chat);
+
+    Chat otherNameChat("Giacomo", "Federico");
+    otherNameChat.addMessage(message);
+    ASSERT_FALSE(otherNameChat == chat);
+
+    Chat messageChat("Giacomo", "Corinna");
+    messageChat.addMessage(Message("Giacomo", "Corinna", "See you then"));
+    ASSERT_FALSE(messageChat == chat);
+
+}
+
+TEST(Chat, InequalityOperator){
+
+    Chat chat("Corinna", "Giacomo");
+    Message message("Corinna", "Giacomo", "Hi!");
+    chat.addMessage(message);
+
+    Chat equalChat("Corinna", "Giacomo");
+    equalChat.addMessage(message);
+    ASSERT_FALSE(equalChat != chat);
+
+    Chat myNameChat("Alberto", "Giacomo");
+    myNameChat.addMessage(message);
+    ASSERT_TRUE(myNameChat != chat);
+
+    Chat otherNameChat("Corinna", "Federico");
+    otherNameChat.addMessage(message);
+    ASSERT_TRUE(otherNameChat != chat);
+
+    Chat messageChat("Corinna", "Giacomo");
+    messageChat.addMessage(Message("Corinna", "Giacomo", "I have not seen you for a long time"));
+    ASSERT_TRUE(messageChat != chat);
+
+}
 
 
 

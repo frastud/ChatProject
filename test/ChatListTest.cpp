@@ -36,3 +36,35 @@ TEST(ChatList, FindChat){
     ASSERT_FALSE(chats.findChat("Alice"));
 
 }
+
+TEST(ChatList, EqualityOperator){
+
+    ChatList chats;
+    Chat aChat("Alice", "Chiara");
+    chats.addChat(aChat);
+
+    ChatList equalChats;
+    equalChats.addChat(aChat);
+    ASSERT_TRUE(equalChats == chats);
+
+    ChatList differentChats;
+    differentChats.addChat(Chat("Martina", "Francesco"));
+    ASSERT_FALSE(differentChats == chats);
+
+}
+
+TEST(ChatList, InequalityOperator){
+
+    ChatList chats;
+    Chat cChat("Chiara", "Alice");
+    chats.addChat(cChat);
+
+    ChatList differentChats;
+    differentChats.addChat(Chat("Martina", "Francesco"));
+    ASSERT_TRUE(differentChats != chats);
+
+    ChatList equalChats;
+    equalChats.addChat(cChat);
+    ASSERT_FALSE(equalChats != chats);
+
+}
