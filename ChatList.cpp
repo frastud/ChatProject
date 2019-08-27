@@ -5,10 +5,13 @@
 #include "ChatList.h"
 
 
+ChatList::ChatList(const std::string owner): chatOwner(owner) {}
 
 void ChatList::addChat(const Chat &chat) {
 
-    chats.emplace(chat.getOtherName(),chat);
+    if(chat.getMyName() == chatOwner) {
+        chats.emplace(chat.getOtherName(), chat);
+    }
 
 }
 
@@ -20,8 +23,12 @@ void ChatList::deleteChat(const std::string &chatName) {
 
         if(chat != chats.end())
             chats.erase(chat);
+        else throw not_found("chat", chatName);
 
     }
+
+    throw  not_found("chat", chatName);
+
 }
 
 Chat& ChatList::containedChat(const std::string &chatName) {
@@ -33,28 +40,19 @@ Chat& ChatList::containedChat(const std::string &chatName) {
         if(chat != chats.end())
             return chat->second;
 
-    }
-
-}
-
-
-bool ChatList::findChat(const std::string &chatName) const {
-
-    if(!chats.empty()) {
-
-        auto chat = chats.find(chatName);
-
-        if(chat != chats.end())
-            return true;
-        else return false;
+        else throw not_found("chat", chatName);
 
     }
 
-    return false;
+    throw not_found("chat", chatName);
+
 }
 
 
 bool ChatList::operator==(const ChatList &right) const {
+
+    if(chatOwner != right.chatOwner)
+        return false;
 
     if(chats != right.chats)
         return false;
