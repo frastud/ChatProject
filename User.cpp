@@ -16,7 +16,6 @@ User::~User() {
 bool User::createAccount(const std::string userName, const std::string password) {
 
     if(account != nullptr){
-        std::cout << "you already have an account! " << std::endl;
         return false;
     }
 
@@ -25,14 +24,13 @@ bool User::createAccount(const std::string userName, const std::string password)
 
 }
 
-const Account& User::logIn( const std::string userName, const std::string password) {
+Account& User::logIn( const std::string userName, const std::string password) {
 
     if(account != nullptr){
 
         if(account->checkCredentials(userName, password))
             return *account;
 
-        std::cout << "wrong credential" << std::endl;
         throw not_found("Account", userName);
     }
 
@@ -59,7 +57,6 @@ void User::deleteAccount(const std::string userName, const std::string password)
 bool User::createAccount(const std::string password) {
 
     if(account != nullptr){
-        std::cout << "you already have an account! " << std::endl;
         return false;
     }
 

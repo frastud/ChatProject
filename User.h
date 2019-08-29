@@ -20,7 +20,7 @@ public:
     const std::string getSecondName() const { return secondName; }
     bool createAccount(const std::string userName, const std::string password);
     bool createAccount(const std::string password);  // create an account with a default username
-    const Account& logIn(const std::string userName, const std::string password);
+    Account& logIn(const std::string userName, const std::string password);
     void deleteAccount(const std::string userName, const std::string password);
 
 

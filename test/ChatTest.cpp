@@ -45,6 +45,15 @@ TEST(Chat, UnreadMessage){
 
     ASSERT_EQ(1, messenger.getNumUnreadMessage());
 
+    Message newLMessage("Ludovica", "Alice", "are you still there?");
+    messenger.addMessage(newLMessage);
+
+    ASSERT_EQ(2, messenger.getNumUnreadMessage());
+
+    messenger.readMessage(2);
+
+    ASSERT_EQ(1, messenger.getNumUnreadMessage());
+
 }
 
 TEST(Chat, readMessage){

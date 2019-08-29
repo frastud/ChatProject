@@ -12,7 +12,7 @@ class not_found: public std::exception {
 
 public:
 
-    explicit not_found(const std::string thing, const std::string name) {
+     not_found(const std::string thing, const std::string name) {
 
         std::string error="there is no " + thing + " named: " + name;
         occurredError=error.c_str();
